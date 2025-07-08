@@ -1,6 +1,6 @@
 <?php
 function conectar() {
-  return new PDO("mysql:host=localhost;dbname=tarefas_db", "root", "");
+  return new PDO("mysql:host=localhost;dbname=tarefas_db", "root", "senha123");
 }
 
 function listarTarefas() {
