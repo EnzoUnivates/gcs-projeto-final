@@ -1,4 +1,5 @@
-CREATE DATABASE tarefas_db;
+CREATE DATABASE IF NOT EXISTS tarefas_db;
+
 USE tarefas_db;
 
 CREATE TABLE tarefas (
