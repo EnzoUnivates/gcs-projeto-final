@@ -17,6 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
 <form method="post">
     <h2>Cadastrar Usuário</h2>
     <input type="text" name="nome" required placeholder="Nome"><br>
@@ -24,3 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" name="senha" required placeholder="Senha"><br>
     <button type="submit">Cadastrar</button>
 </form>
+</div>
+
+</body>
+</html>

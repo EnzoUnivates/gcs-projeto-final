@@ -15,10 +15,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<form method="post">
-    <h2>Login</h2>
-    <input type="email" name="email" required placeholder="E-mail"><br>
-    <input type="password" name="senha" required placeholder="Senha"><br>
-    <button type="submit">Entrar</button>
-    <?php if (isset($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
-</form>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <form method="post">
+        <h2>Login</h2>
+        <input type="email" name="email" required placeholder="E-mail">
+        <input type="password" name="senha" required placeholder="Senha">
+        <button type="submit">Entrar</button>
+        <?php if (isset($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
+    </form>
+</div>
+
+</body>
+</html>
+

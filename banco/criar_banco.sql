@@ -27,6 +27,6 @@ INSERT INTO tarefas (titulo, descricao, id_usuario) VALUES
 ('Atualizar documentação', 'Revisar docs do projeto X', 1),
 ('Testar novo layout', 'Aplicar responsividade na tela de tarefas', 2),
 ('Teste', 'Testando tabela de tarefas novamente', 1),
-('\'123', 'abcsde', 1),
+('\123', 'abcsde', 1),
 ('Teste Unitário', 'Descrição', 1),
 ('Chave123', 'Busca lógica', 1);

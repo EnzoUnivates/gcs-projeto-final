@@ -18,13 +18,17 @@ $tarefas = listarTarefas($usuario['id'], $busca, $data, $usuarioFiltro);
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Minhas Tarefas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Bem-vindo, <?= htmlspecialchars($usuario['nome']) ?>!</h1>
     
+    <div class="container">
+
     <a href="cadastrar.php"><button>Nova Tarefa</button></a>
-    <a href="logout.php"><button>Sair</button></a>
+    <a href="logout.php"><button>Logout</button></a>
 
     <form method="get">
         <input type="text" name="busca" placeholder="Buscar palavra-chave" value="<?= $_GET['busca'] ?? '' ?>">
@@ -34,8 +38,10 @@ $tarefas = listarTarefas($usuario['id'], $busca, $data, $usuarioFiltro);
         <?php endif; ?>
         <button type="submit">Filtrar</button>
     </form>
+    
+    </div>
 
-
+    <div class="container">
     <h2>Minhas Tarefas</h2>
     <ul>
         <?php foreach ($tarefas as $tarefa): ?>
@@ -46,5 +52,7 @@ $tarefas = listarTarefas($usuario['id'], $busca, $data, $usuarioFiltro);
             </li>
         <?php endforeach; ?>
     </ul>
+
+    </div>
 </body>
 </html>

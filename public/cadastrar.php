@@ -16,9 +16,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
 <form method="post">
     <h2>Nova Tarefa</h2>
     <input type="text" name="titulo" required placeholder="Título"><br>
     <textarea name="descricao" required placeholder="Descrição"></textarea><br>
     <button type="submit">Salvar</button>
 </form>
+</div> 
+
+</body>
+</html>
