@@ -1,20 +1,50 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+session_start();
 require_once __DIR__ . '/../src/funcoes.php';
-$tarefas = listarTarefas();
+
+if (!usuarioLogado()) {
+    header('Location: login.php');
+    exit;
+}
+
+$usuario = usuarioAtual();
+$busca = $_GET['busca'] ?? null;
+$data = $_GET['data'] ?? null;
+$usuarioFiltro = $_GET['usuario'] ?? null;
+
+$tarefas = listarTarefas($usuario['id'], $busca, $data, $usuarioFiltro);
 ?>
 
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><title>Lista de Tarefas</title></head>
+<head>
+    <title>Minhas Tarefas</title>
+</head>
 <body>
-  <h1>Minhas Tarefas</h1>
-  <ul>
-    <?php foreach ($tarefas as $tarefa): ?>
-      <li><?= $tarefa['descricao'] ?></li>
-    <?php endforeach; ?>
-  </ul>
+    <h1>Bem-vindo, <?= htmlspecialchars($usuario['nome']) ?>!</h1>
+    
+    <a href="cadastrar.php"><button>Nova Tarefa</button></a>
+    <a href="logout.php"><button>Sair</button></a>
+
+    <form method="get">
+        <input type="text" name="busca" placeholder="Buscar palavra-chave" value="<?= $_GET['busca'] ?? '' ?>">
+        <input type="date" name="data" value="<?= $_GET['data'] ?? '' ?>">
+        <?php if ($usuario['nome'] === 'admin'): ?>
+            <input type="text" name="usuario" placeholder="Filtrar por usuário" value="<?= $_GET['usuario'] ?? '' ?>">
+        <?php endif; ?>
+        <button type="submit">Filtrar</button>
+    </form>
+
+
+    <h2>Minhas Tarefas</h2>
+    <ul>
+        <?php foreach ($tarefas as $tarefa): ?>
+            <li>
+                <strong><?= htmlspecialchars($tarefa['titulo']) ?></strong><br>
+                <?= nl2br(htmlspecialchars($tarefa['descricao'])) ?><br>
+                <small>Por: <?= htmlspecialchars($tarefa['nome_usuario']) ?> em <?= $tarefa['data_criacao'] ?></small>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
