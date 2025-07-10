@@ -15,8 +15,8 @@ INSERT INTO usuarios (nome, email, senha) VALUES
 
 CREATE TABLE tarefas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255),
-    descricao TEXT,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT NOT NULL,
     id_usuario INT,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
@@ -27,12 +27,3 @@ INSERT INTO tarefas (titulo, descricao, id_usuario) VALUES
 ('Atualizar documentação', 'Revisar docs do projeto X', 1),
 ('Testar novo layout', 'Aplicar responsividade na tela de tarefas', 2);
 
-CREATE TABLE log_alteracoes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT,
-    acao VARCHAR(255),
-    tabela_afetada VARCHAR(50),
-    id_registro INT,
-    data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);

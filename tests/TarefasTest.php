@@ -1,7 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 require_once __DIR__ . '/../src/funcoes.php';
-session_start();
 
 class TarefasTest extends TestCase {
 
@@ -25,28 +24,28 @@ class TarefasTest extends TestCase {
     }
 
     public function testListarTarefasRetornaArray() {
-        $tarefas = listarTarefasUser(usuarioAtual()['id']);
+        $tarefas = listarTarefas(usuarioAtual()['id']);
         $this->assertIsArray($tarefas);
     }
 
     public function testListarTarefasOutroUsuario() {
-        $tarefas = listarTarefasUser(9999);
+        $tarefas = listarTarefas(9999);
         $this->assertEmpty($tarefas);
     }
 
     public function testFiltroPorPalavraChave() {
         adicionarTarefa('Chave123', 'Busca lógica', usuarioAtual()['id']);
-        $result = listarTarefasUser(usuarioAtual()['id'], 'Chave123');
+        $result = listarTarefas(usuarioAtual()['id'], 'Chave123');
         $this->assertNotEmpty($result);
     }
 
     public function testFiltroPorNomeUsuario() {
-        $tarefas = listarTarefasUser(null, null, null, 'Enzo');
+        $tarefas = listarTarefas(null, null, null, 'Enzo');
         $this->assertIsArray($tarefas);
     }
 
     public function testCamposTarefaValidos() {
-        $tarefas = listarTarefasUser(usuarioAtual()['id']);
+        $tarefas = listarTarefas(usuarioAtual()['id']);
         if (!empty($tarefas)) {
             $this->assertArrayHasKey('titulo', $tarefas[0]);
             $this->assertArrayHasKey('descricao', $tarefas[0]);
@@ -54,13 +53,5 @@ class TarefasTest extends TestCase {
         } else {
             $this->markTestSkipped('Sem tarefas cadastradas.');
         }
-    }
-
-    public function testLogDeCriacaoRegistrado() {
-        adicionarTarefa('Teste Log', 'Logando ação', usuarioAtual()['id']);
-        $pdo = conectar();
-        $stmt = $pdo->query("SELECT * FROM log_alteracoes WHERE acao LIKE '%Criou%' ORDER BY id DESC LIMIT 1");
-        $log = $stmt->fetch();
-        $this->assertNotEmpty($log);
     }
 }
