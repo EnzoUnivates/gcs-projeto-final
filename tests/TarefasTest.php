@@ -14,13 +14,13 @@ class TarefasTest extends TestCase {
     }
 
     public function testAdicionarTarefaSemTitulo() {
-        $this->expectException(PDOException::class);
-        adicionarTarefa('', 'Desc', usuarioAtual()['id']);
+        $this->expectException(InvalidArgumentException::class);
+        adicionarTarefa('', 'Descrição válida', usuarioAtual()['id']);
     }
 
     public function testAdicionarTarefaSemDescricao() {
-        $this->expectException(PDOException::class);
-        adicionarTarefa('Título', '', usuarioAtual()['id']);
+        $this->expectException(InvalidArgumentException::class);
+        adicionarTarefa('Título válido', '', usuarioAtual()['id']);
     }
 
     public function testListarTarefasRetornaArray() {

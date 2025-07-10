@@ -37,9 +37,15 @@ function usuarioAtual() {
 }
 
 function adicionarTarefa($titulo, $descricao, $id_usuario) {
+    if (trim($titulo) === '' || trim($descricao) === '') {
+        throw new InvalidArgumentException("Título e descrição não podem ser vazios.");
+    }
+
     $pdo = conectar();
     $stmt = $pdo->prepare("INSERT INTO tarefas (titulo, descricao, id_usuario) VALUES (?, ?, ?)");
-    return $stmt->execute([$titulo, $descricao, $id_usuario]);
+    $stmt->execute([$titulo, $descricao, $id_usuario]);
+
+    return true;
 }
 
 function listarTarefas($id_usuario = null, $busca = null, $data = null, $usuarioNome = null) {
