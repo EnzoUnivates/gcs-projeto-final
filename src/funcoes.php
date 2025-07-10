@@ -78,3 +78,9 @@ function logout() {
     header('Location: login.php');
     exit;
 }
+
+function logoutSemRedirect() {
+    $_SESSION = [];
+    session_destroy();
+}
+

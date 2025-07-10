@@ -28,7 +28,7 @@ class FuncoesTest extends TestCase {
     }
 
     public function testLogout() {
-        logout();
+        logoutSemRedirect();
         $this->assertFalse(usuarioLogado());
     }
 
