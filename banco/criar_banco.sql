@@ -10,8 +10,8 @@ CREATE TABLE usuarios (
 );
 
 INSERT INTO usuarios (nome, email, senha) VALUES
-('Enzo', 'enzo@example.com', '$2y$10$3z2AvjXJPhAxFZBPq4zHveM1P1eI2.Vvx84MJf4gErLeBG5pjJtNe'), 
-('Teste', 'teste@example.com', '$2y$10$96lD3gkQdt0uNAD9wIpgAOs0RMHEzFS7JbP2i4lFo7OfgPjU.QGWW'); 
+('Enzo', 'enzo@example.com', '1234'),
+('Teste', 'teste@example.com', '1234');
 
 CREATE TABLE tarefas (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,5 +25,8 @@ CREATE TABLE tarefas (
 INSERT INTO tarefas (titulo, descricao, id_usuario) VALUES
 ('Corrigir erro de login', 'Erro 500 ao fazer login', 1),
 ('Atualizar documentação', 'Revisar docs do projeto X', 1),
-('Testar novo layout', 'Aplicar responsividade na tela de tarefas', 2);
-
+('Testar novo layout', 'Aplicar responsividade na tela de tarefas', 2),
+('Teste', 'Testando tabela de tarefas novamente', 1),
+('\'123', 'abcsde', 1),
+('Teste Unitário', 'Descrição', 1),
+('Chave123', 'Busca lógica', 1);
