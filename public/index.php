@@ -42,7 +42,7 @@ $tarefas = listarTarefas($usuario['id'], $busca, $data, $usuarioFiltro);
     </div>
 
     <div class="container">
-    <h2>Minhas Tarefas</h2>
+    <h2>Minhas Tarefas Final</h2>
     <ul>
         <?php foreach ($tarefas as $tarefa): ?>
             <li>
